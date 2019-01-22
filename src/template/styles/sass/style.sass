@@ -3,11 +3,12 @@
 @import fonts.sass
 @import grid.sass
 @import '../../libs/fancybox/dist/jquery.fancybox.css'
+@import '../../libs/slick-carousel/slick/slick.css'
 
 
 /* Global settings */
-$font-size: 16px
-$font-family-1: 'Tahoma', sans-serif
+$font-size: 20px
+$font-family-1: 'Geometria', sans-serif
 $color-1: #000
 
 
@@ -61,10 +62,19 @@ input, textarea, button
 	position: relative
 	&__wrap
 		display: block
-		font-size: $font-size
+		font-size: 16px
 		font-family: $font-family-1
 		background: white
 		width: 100%
+		background-color: #f6f6f6
+		height: 58px
+		border-radius: 5px
+		padding-left: 20px
+		padding-right: 20px
+		border: 2px solid #f6f6f6
+		&::placeholder
+			opacity: 1
+			color: $color-1
 
 
 .textarea
@@ -77,6 +87,42 @@ input, textarea, button
 		width: 100%
 		resize: none
 
+.checkbox
+	input
+		&:checked + label
+			&:after
+				opacity: 1
+				transform: scale(1)
+	label
+		font-size: 14px
+		line-height: 16px
+		padding-left: 27px
+		display: inline-block
+		position: relative
+		cursor: pointer
+		&:before, &:after
+			content: ''
+			top: 0
+			left: 0
+			position: absolute
+			transition: .3s
+		&:before
+			border: 2px solid #0266e0
+			width: 17px
+			height: 17px
+		&:after
+			width: 9px
+			height: 9px
+			background-color: #0266e0
+			margin: 4px
+			opacity: 0
+			transform: scale(0)
+		a
+			color: #0266e0
+			border-color: #0266e0
+			&:hover
+				border-color: transparent
+
 .btn
 	position: relative
 	display: flex
@@ -88,6 +134,16 @@ input, textarea, button
 	text-align: center
 	transition: .3s
 	background-color: transparent
+	&_default
+		height: 55px
+		padding-left: 35px
+		padding-right: 35px
+		box-shadow: 4px 13px 28px 2px rgba(2, 102, 224, 0.33)
+		border-radius: 50px
+		color: #fff
+		background-color: #0266e0
+		&:hover
+			box-shadow: none
 
 .input input, .textarea textarea
 	transition: .3s
@@ -114,9 +170,520 @@ input, .btn, .slick-slide, textarea
 .main-wrap
 	// overflow-x: hidden
 
+.title
+	text-align: center
+	font-size: 50px
+	font-weight: 300
+
+.subtitle
+	font-size: 30px
+	font-weight: 300
+
+.panel
+	position: fixed
+	top: 0
+	left: 0
+	right: 0
+	box-shadow: 0 0 37px 1px rgba(0, 0, 0, 0.17)
+	background-color: #fff
+	z-index: 10
+	padding-top: 22px
+	padding-bottom: 28px
+	transition: .3s
+	&_scroll
+		padding-top: 14px
+		padding-bottom: 20px
+	&__logo
+		margin-right: auto
+		width: 166px
+	&__email
+		width: 185px
+		font-size: 18px
+		margin-right: 55px
+		a
+			border-color: $color-1
+			&:hover
+				border-color: transparent
+	&__call
+		text-align: right
+		width: 218px
+	&__phone
+		font-size: 22px
+		a
+			color: #0266e0
+	&__time
+		font-size: 16px
+	&__btn
+		margin-left: 17px
+
+.header
+	min-height: 930px
+	padding-top: 240px
+	background: url('../../img/header.png') no-repeat center 35px
+	&__title
+		text-align: center
+		color: #0266e0
+		font-size: 55px
+		font-weight: 300
+		margin-bottom: 50px
+		span, strong
+			color: #000000
+	&__img
+		img
+			margin-left: auto
+			margin-right: auto
+
+
+.advantages
+	&__list
+		border-radius: 6px
+		color: #fff
+		background-color: #0266e0
+		padding: 40px 50px
+		margin-left: -45px
+		margin-right: -45px
+		justify-content: space-between
+	&__item
+		display: flex
+		flex-wrap: wrap
+	&__icon
+		margin-right: 15px
+	&__text
+		font-size: 18px
+		line-height: 20px
+
+
+.catalog
+	background-color: #f6f6f6
+	margin-top: -60px
+	padding-top: 100px
+	padding-bottom: 75px
+	&__title
+		margin-bottom: -5px
+	&__desc
+		text-align: center
+		margin-bottom: 40px
+	&__nav
+		min-height: 78px
+		margin-bottom: 25px
+		&-item
+			cursor: pointer
+			font-size: 0
+		&-title
+			display: flex
+			flex-wrap: wrap
+			justify-content: center
+			align-items: center
+			font-size: 16px
+			border-radius: 50px
+			height: 44px
+			background-color: transparent
+			transition: .3s
+			margin-bottom: 0
+		&-desc
+			color: #666666
+			font-size: 14px
+			font-weight: 300
+			text-align: center
+		.slick-current
+
+			.catalog
+				&__nav
+					&-item
+					&-title
+						color: #fff
+						background-color: #0266e0
+						margin-bottom: 15px
+						// box-shadow: 4px 13px 28px 2px rgba(2, 102, 224, 0.33)
+		.slick-track
+			transform: none !important
+			display: flex
+			flex-wrap: wrap
+			width: 100% !important
+			&:before, &:after
+				display: none
+		.slick-active
+			width: calc(100% / 9) !important
+
+	&__list
+		margin-left: -15px
+		margin-right: -15px
+
+	&__item
+		display: flex !important
+		padding-left: 15px
+		padding-right: 15px
+
+	&__content
+		width: 490px
+		padding-right: 75px
+		padding-top: 12px
+	&__table
+		margin-bottom: 30px
+		table
+			width: 100%
+			border-collapse: collapse
+			text-align: left
+			thead
+				th, td
+					font-weight: 700
+					background-color: #dddddd
+			tbody
+				th, td
+					border-bottom: 1px solid #dddddd
+				tr
+					&:last-of-type
+						th, td
+							border-color: transparent
+
+			th, td
+				padding: 14px 18px 17px
+	&__gallery
+		width: calc(100% - 490px)
+
+	&__btn
+		display: inline-flex
+		margin-bottom: 65px
+	&__link
+		max-width: 375px
+		line-height: 30px
+		a
+			border-color: #0266e0
+			&:hover
+				border-color: transparent
 
 
 
+
+.gallery
+	font-size: 0
+	&__list
+		width: 555px
+		margin-bottom: 30px
+
+	&__width
+	&__item
+		position: relative
+	&__img
+		padding-top: 22px
+		padding-left: 38px
+		&_first
+			padding-left: 28px
+		img
+			margin-left: auto
+			margin-right: auto
+	&__nav
+		padding-left: 27px
+		.slick-track
+			display: flex !important
+			flex-wrap: wrap
+			transform: none !important
+			width: 100% !important
+			&:before, &:after
+				display: none
+		&-item
+			height: 92px
+			border: 2px solid transparent
+			padding: 5px 10px
+			border-radius: 5px
+			transition: .3s
+			cursor: pointer
+		.slick-slide
+			margin-right: 5px
+			&:last-of-type
+				margin-right: 0
+		.slick-current
+			.gallery
+				&__nav
+					&-item
+						border-color: #0266e0
+.param
+	color: #666666
+	position: absolute
+	font-size: $font-size
+	span
+		color: $color-1
+		font-weight: 700
+	&_width
+		text-align: center
+		left: 50%
+		transform: translateX(-50%)
+	&_height
+		top: 50%
+		padding-top: 0
+		margin-left: -60px
+		transform: translateY(-50%) rotate(-90deg)
+	&_diagonal
+		top: calc(50% - 10px)
+		left: calc(50% - 10px)
+		padding-left: 35px
+		transform: translate(-50%, -50%)
+		span
+			display: block
+			color: #fff
+
+
+.opportunities
+	padding-top: 45px
+	padding-bottom: 65px
+	&__title
+		margin-bottom: 35px
+	&__list
+		margin-left: -15px
+		margin-right: -15px
+	&__mounts, &__play
+		padding-left: 15px
+		padding-right: 15px
+
+	&__subtitle
+		margin-bottom: 25px
+
+	&__mounts
+		width: 685px
+
+	&__play
+		width: calc(100% - 685px)
+		padding-left: 30px
+		
+
+.mounts
+	&__item
+		background-color: #f6f6f6
+		margin-bottom: 25px
+		width: 100%
+		padding: 22px 5px 35px
+		display: flex
+		flex-wrap: wrap
+		align-items: center
+		flex-direction: column
+		justify-content: space-between
+		&:last-of-type
+			margin-bottom: 0
+		&_large
+			.mounts
+				&__img
+					padding-top: 15px
+	&__col
+		&:nth-of-type(1)
+			width: 40%
+			margin-right: 4%
+		&:nth-of-type(2)
+			width: 56%
+	&__img
+		margin-bottom: 15px
+		img
+			margin-left: auto
+			margin-right: auto
+	&__title
+		text-align: center
+
+
+.play
+	&__list
+		ul
+		li
+			width: 100%
+			position: relative
+			padding-left: 38px
+			margin-bottom: 24px
+			&:last-of-type
+				margin-bottom: 0
+			&:before
+				content: ''
+				position: absolute
+				top: 0
+				left: 0
+				width: 25px
+				height: 25px
+				background: url('../../img/li.png') no-repeat center
+
+
+
+
+.dops
+	background-color: #f6f6f6
+	padding-top: 55px
+	padding-bottom: 60px
+	&__title
+		margin-bottom: 55px
+
+	&__list
+		margin-left: -15px
+		margin-right: -15px
+
+	&__item
+		width: calc(33.33% - 30px)
+		margin-left: 15px
+		margin-right: 15px
+		
+
+	&__img
+		position: relative
+		height: 235px
+		&:before
+			content: ''
+			position: absolute
+			height: 235px
+			left: 0
+			right: 0
+			top: 18px
+			background-color: #ffffff
+			border-radius: 6px
+		img
+			position: relative
+			margin-left: auto
+			margin-right: auto
+			z-index: 2
+
+	&__name
+		text-align: center
+		padding-top: 32px
+		
+
+.img-car
+	position: relative
+	right: -16px
+
+
+
+
+.contacts
+	position: relative
+	&__wrap
+		width: 455px
+		position: absolute
+		top: 50%
+		left: 50%
+		margin-left: 110px
+		border-radius: 5px
+		z-index: 1
+		background-color: #fff
+		transform: translateY(-50%)
+		padding: 25px 42px 42px
+	&__map
+		height: 685px
+
+	&__title
+		text-align: left
+		margin-bottom: 18px
+
+	&__data
+		margin-bottom: 25px
+
+	&__text
+		font-size: 17px
+		line-height: 20px
+		margin-bottom: 25px
+		color: #666666
+		max-width: 310px
+		width: 100%
+		p
+			margin-bottom: 18px
+			&:last-of-type
+				margin-bottom: 0
+
+	&__btn
+		display: inline-flex
+
+
+.data
+	line-height: 30px
+	&__title
+		color: #666666
+
+
+.footer
+	padding-top: 34px
+	padding-bottom: 50px
+	&__logo
+		width: 166px
+	&__policy
+		font-size: 14px
+		margin-left: auto
+		margin-right: auto
+		width: 225px
+		text-align: center
+		a
+			color: #666666
+			border-color: #666666
+			&:hover
+				border-color: transparent
+	&__email
+		font-size: 18px
+		width: 185px
+		text-align: center
+		margin-right: 55px
+		a
+			border-color: $color-1
+			&:hover
+				border-color: transparent
+
+	&__call
+		text-align: right
+		width: 218px
+
+	&__phone
+		font-size: 22px
+		a
+			color: #0266e0
+	&__time
+		font-size: 16px
+		
+
+.popup
+	position: relative
+	font-family: $font-family-1
+	border-radius: 5px
+	cursor: default !important
+	display: none
+	&_small
+		width: 395px
+		padding: 40px 15px 43px
+	&__close
+		position: absolute
+		right: 21px
+		top: 24px
+		width: 22px
+		height: 22px
+		background: url('../../img/x.png') no-repeat center
+		cursor: pointer
+		transition: .3s
+		&:hover
+			transform: scale(.8)
+	&__title
+		text-align: center
+		margin-bottom: 11px
+	&__desc
+		font-size: 16px
+		line-height: 20px
+		text-align: center
+		margin-bottom: 15px
+	&__text
+		text-align: center
+		font-size: 18px
+		padding-top: 20px
+
+
+.form
+	&__input
+		margin-bottom: 12px
+	&__checkbox
+		margin-top: 25px
+		margin-bottom: 40px
+	&__btn
+		margin-left: auto
+		margin-right: auto
+
+
+
+.fancybox-bg
+	background-color: $color-1
+		
+.fancybox-close-small
+	display: none
+
+.fancybox-is-open .fancybox-bg
+	opacity: .4
 
 .hidden-lg
 	display: none
